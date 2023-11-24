@@ -1,9 +1,16 @@
+import json
 #function to open a new tab option number 1 
 def newTab(title,url):
+   newTab={"title":title,"url":url}
+   tab.update(newTab)
+   current_tab_index = len(tab) - 1
+   print("Tab opened: " + title)
+   return tab, current_tab_index
+
   
 #main menu function containing the options for the user to choose from 
-def mainMenu(items):
-  tab={}
+def mainMenu():
+  
   choice=-99 # dummy value
   while choice !=9:
     print("Welcome to the Advanced Browser Tabs Simulation")
@@ -21,22 +28,12 @@ def mainMenu(items):
     choice=int(input())
 
     if choice==1:
+      title = input("Enter the title of the website: ")
+      url = input("Enter the URL: ")
       newTab(title,url)
     elif choice ==2:
-      
-    elif choice ==3:
-      
-    elif choice ==4:
-      
-    elif choice ==5:
-      
-    elif choice ==6:
-      
-    elif choice ==7:
-      
-    elif choice ==8:
-      
-    elif choice ==9:
-      
+      print("bye bye")
     else:
       print("ivalid input")
+tab= {}
+mainMenu()
