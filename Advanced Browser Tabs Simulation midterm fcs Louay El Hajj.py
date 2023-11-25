@@ -13,6 +13,11 @@ def sortTabs(tabs):
     for border in range(n - 1):
         min_index = border # contain the index of the minimum element
         for i in range(border + 1, n):# to find the index of the minimum element
+           if tabs[i]["title"] < tabs[min_index]["title"]:
+                min_index -= i
+             # Swap the two elements
+        tabs[border], tabs[min_index] = tabs[min_index], tabs[border]
+    print("Tabs sorted based on titles.")
 # Function to open a nested tab (Option 5)
 def openNestedTab(current_tab_index):
     index = int(input("Enter the index of the parent tab: "))
