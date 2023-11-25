@@ -1,13 +1,43 @@
-import json
-#function to close a tab option number 2 
-# Function to close a tab (Option 2)
-tabs = []
+#lbraries imported for json and web scraping 
+#URL used for web scraping code snippet help : https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
 
+import json
+from bs4 import BeautifulSoup 
+import requests 
+import re 
+tabs = []
+# Function to switch tabs (Option 3)
+#URL used for web scraping code snippet help : https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
+# please use https:// format to test the scraping 
+def switch_tabs(current_tab_index, index=None):
+  global tabs
+  if not tabs:
+      print("No tabs available.")
+      return current_tab_index
+
+  if index == "":
+      index = len(tabs)  # Switch to the last opened tab
+  else:
+      try:
+          index = int(index)
+          if not 1 <= index <= len(tabs):
+              print("Invalid tab index. Please try again.")
+              return current_tab_index
+      except ValueError:
+          print("Invalid input. Please enter a valid integer index.")
+          return current_tab_index
+
+  url = tabs[index - 1]["url"]  # Adjust for 1-based index
+  response = requests.get(url)
+  print("Switched to tab {}: {}".format(index, tabs[index - 1]["title"]))
+  print(response.text)  # Print the response text
+  return index
+#function to close a tab option number 2 
 def closeTab(current_tab_index, index=None):
   while True:
     if index is None:
       index = current_tab_index
-    try:#try to check the input if empty or wrong input 
+    try:
       if index == "":
         index = len(tabs)  # Close the last opened tab
         index = int(index)
@@ -59,7 +89,9 @@ def mainMenu():
      elif choice == 2:  # Closing a tab
        index = input("Enter the index of the tab you want to close\n""Leave it empty to close the last open tab: ")                           
        current_tab_index = closeTab(current_tab_index, index)
-     # elif choice == 3:
+     elif choice == 3:
+       index = input("Enter the index of the tab you want to switch to: ")
+       current_tab_index = switch_tabs(current_tab_index, index)
             
       # elif choice == 4:
             
@@ -71,7 +103,7 @@ def mainMenu():
             
       # elif choice == 8:
             
-     elif choice == 9:#closing the program 
+     elif choice == 9:#closin the program 
             print("Thank you for using the Advanced Browser Tabs Simulation")
      else:#input less than 0 or greater than 9 
             print("Invalid input")
