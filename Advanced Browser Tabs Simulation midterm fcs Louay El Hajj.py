@@ -25,7 +25,7 @@ def displayAllTabs():
         if tab["nested_tabs"]:
             displayNestedTabs(tab["nested_tabs"], i + 1)
 
-def displayNestedTabs(nested_tabs, parent_index):
+def displayNestedTabs(nested_tabs, parent_index):#https://www.w3schools.com/python/ref_string_format.asp
     for j, nested_tab in enumerate(nested_tabs):
         print("   {}.{}. {}".format(parent_index, j + 1, nested_tab["title"]))
         if nested_tab["nested_tabs"]:
