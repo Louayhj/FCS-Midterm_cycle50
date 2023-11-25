@@ -3,19 +3,27 @@ import json
 # Function to close a tab (Option 2)
 tabs = []
 def closeTab(current_tab_index, index=None):
-  if index is None:
-      index = current_tab_index
+  while True:
+      if index is None:
+          index = current_tab_index
 
-  index = int(index)  # Convert the input index to an integer
-  index -= 1  # Adjust for 1-based index input
+      try:#added the try and except and the while loop to prevent user from entering an index that is not available 
+          index = int(index)  # Convert the input index to an integer
+          index -= 1  # Adjust for 1-based index input
 
-  if 0 <= index < len(tabs):
-      closed_tab = tabs.pop(index)
-      print("Tab closed: " + closed_tab["title"])
-      if current_tab_index >= len(tabs):
-          current_tab_index = len(tabs) - 1
-  else:
-      print("Invalid tab index.")
+          if 0 <= index < len(tabs):
+              closed_tab = tabs.pop(index)
+              print("Tab closed: " + closed_tab["title"])
+              if current_tab_index >= len(tabs):
+                  current_tab_index = len(tabs) - 1
+              break  # Break out of the loop if the operation is successful
+          else:
+              print("Invalid tab index. Please try again.")
+              index = input("Enter the index of the tab you want to close  \n leave it empty to close the last open tab : ")
+
+      except ValueError:
+          print("Invalid input. Please enter a valid integer index.")
+          index = input("Enter the index of the tab to close (optional): ")
 
   return current_tab_index
 
@@ -53,12 +61,10 @@ def mainMenu():
             title = input("Enter the title of the website: ")
             url = input("Enter the URL: ")
             current_tab_index = newTab(title, url)
-      elif choice == 2:#closing a tab using index if no index applied close the last tab 
-            index = input("Enter the index of the tab to close (optional): ")
-            if index.strip():  # Check if the input is not empty
-                current_tab_index = closeTab(current_tab_index, index)
-            else:
-                current_tab_index = closeTab(current_tab_index)
+              
+      elif choice == 2:#closing a tab 
+            index = input("Enter the index of the tab you want to close leave it empty to close the last open tab : ")
+            current_tab_index = closeTab(current_tab_index, index)
      # elif choice == 3:
             
       # elif choice == 4:
@@ -66,7 +72,7 @@ def mainMenu():
       # elif choice == 5:
             
       # elif choice == 6:
-      #       sortAllTabs()
+         
       # elif choice == 7:
             
       # elif choice == 8:
