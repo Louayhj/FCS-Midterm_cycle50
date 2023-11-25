@@ -6,6 +6,13 @@ from bs4 import BeautifulSoup
 import requests 
 import re 
 tabs = []
+#function to sort all tabs (option6)
+#using selection sort 
+def sortTabs(tabs):
+    n = len(tabs)
+    for border in range(n - 1):
+        min_index = border # contain the index of the minimum element
+        for i in range(border + 1, n):# to find the index of the minimum element
 # Function to open a nested tab (Option 5)
 def openNestedTab(current_tab_index):
     index = int(input("Enter the index of the parent tab: "))
@@ -123,7 +130,8 @@ def mainMenu():
      elif choice == 5:
        current_tab_index = openNestedTab(current_tab_index)
 
-      # elif choice == 6:
+     elif choice == 6:
+        sortTabs(tabs)
 
       # elif choice == 7:
 
