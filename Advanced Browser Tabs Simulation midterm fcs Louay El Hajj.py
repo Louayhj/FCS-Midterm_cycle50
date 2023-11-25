@@ -6,6 +6,30 @@ from bs4 import BeautifulSoup
 import requests 
 import re 
 tabs = []
+# Function to open a nested tab (Option 5)
+def openNestedTab(current_tab_index):
+    index = int(input("Enter the index of the parent tab: "))
+    if 0 <= index < len(tabs):
+        title = input("Enter the title of the website: ")
+        url = input("Enter the URL: ")
+        new_tab = {"title": title, "url": url, "nested_tabs": []}
+        tabs[index]["nested_tabs"].append(new_tab)
+        print("Nested tab opened: " + title)
+    else:
+        print("Invalid parent tab index.")
+    return current_tab_index
+# Function to display all tabs (Option 4)
+def displayAllTabs():
+    for i, tab in enumerate(tabs):
+        print("{}. {}".format(i + 1, tab["title"]))
+        if tab["nested_tabs"]:
+            displayNestedTabs(tab["nested_tabs"], i + 1)
+
+def displayNestedTabs(nested_tabs, parent_index):
+    for j, nested_tab in enumerate(nested_tabs):
+        print("   {}.{}. {}".format(parent_index, j + 1, nested_tab["title"]))
+        if nested_tab["nested_tabs"]:
+            displayNestedTabs(nested_tab["nested_tabs"], parent_index)
 # Function to switch tabs (Option 3)
 #URL used for web scraping code snippet help : https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
 # please use https:// format to test the scraping 
@@ -92,17 +116,19 @@ def mainMenu():
      elif choice == 3:
        index = input("Enter the index of the tab you want to switch to: ")
        current_tab_index = switch_tabs(current_tab_index, index)
-            
-      # elif choice == 4:
-            
-      # elif choice == 5:
-            
+
+     elif choice == 4:
+       displayAllTabs()
+
+     elif choice == 5:
+       current_tab_index = openNestedTab(current_tab_index)
+
       # elif choice == 6:
-         
+
       # elif choice == 7:
-            
+
       # elif choice == 8:
-            
+
      elif choice == 9:#closin the program 
             print("Thank you for using the Advanced Browser Tabs Simulation")
      else:#input less than 0 or greater than 9 
