@@ -2,3 +2,7 @@ https://www.w3schools.com/python/ref_string_format.asp
 https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
 https://www.geeksforgeeks.org/python-convert-nested-dictionary-into-flattened-dictionary
 https://www.coursera.org/learn/programming-in-python/lecture/oPHqM/file-handling-in-python
+
+#to validate that input is a valid url to prevent user error in web scraping
+https://snyk.io/blog/secure-python-url-validation/
+https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
