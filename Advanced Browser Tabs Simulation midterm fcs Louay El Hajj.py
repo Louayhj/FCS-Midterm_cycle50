@@ -14,7 +14,7 @@ def sortTabs(tabs):
         min_index = border # contain the index of the minimum element
         for i in range(border + 1, n):# to find the index of the minimum element
            if tabs[i]["title"] < tabs[min_index]["title"]:
-                min_index -= i
+                min_index = i
              # Swap the two elements
         tabs[border], tabs[min_index] = tabs[min_index], tabs[border]
     print("Tabs sorted based on titles.")
