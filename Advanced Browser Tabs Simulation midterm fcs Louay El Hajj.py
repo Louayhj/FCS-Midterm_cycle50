@@ -137,17 +137,15 @@ def mainMenu():
      elif choice == 3:
        index = input("Enter the index of the tab you want to switch to: (use valid urls http:// or https://)  ")
        current_tab_index = switch_tabs(current_tab_index, index)
-
      elif choice == 4:
        displayAllTabs()
-
      elif choice == 5:
        current_tab_index = openNestedTab(current_tab_index)
-
      elif choice == 6:
         sortTabs(tabs)
-
-      # elif choice == 7:
+     elif choice == 7:    
+        filePath=input("Enter the path of the file to save the tabs to: ")
+        saveTabs(tabs,filePath)
 
       # elif choice == 8:
 
