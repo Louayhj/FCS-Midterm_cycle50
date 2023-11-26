@@ -76,27 +76,30 @@ def switch_tabs(current_tab_index, index=None):
 #function to close a tab option number 2 
 def closeTab(current_tab_index, index=None):
   while True:
-    if index is None:
-      index = current_tab_index
-    try:#used try and except to prevent user error wrong input for index
-      if index == "":
-        index = len(tabs)  # Close the last opened tab
-        index = int(index)
-        index -= 1        
-      if 0 <= index < len(tabs):
-        closed_tab = tabs.pop(index)
-        print("Tab closed: " + closed_tab["title"])
-        if current_tab_index >= len(tabs):
-         current_tab_index = len(tabs) - 1
-        break
-      else:
-           print("Invalid tab index. Please try again.")
-           index = input("Enter the index of the tab you want to close\n"
-                                      "Leave it empty to close the last open tab: ")
-    except ValueError:
-      print("Invalid input. Please enter a valid integer index.")
-      index = input("Enter the index of the tab to close (optional): ")
+      if index is None:
+          index = current_tab_index
+      try:
+          if index == "":
+              index = len(tabs)  # Close the last opened tab
+          index = int(index)  # Convert index to integer
+
+          if 0 <= index < len(tabs):
+              closed_tab = tabs.pop(index - 1)  # Adjust index for 0-based indexing
+              print("Tab closed: " + closed_tab["title"])
+
+              # Adjust the current_tab_index if needed
+              if current_tab_index >= len(tabs):
+                  current_tab_index = len(tabs) - 1
+              break
+          else:
+              print("Invalid tab index. Please try again.")
+              index = input("Enter the index of the tab you want to close\n"
+                            "Leave it empty to close the last open tab: ")
+      except ValueError:
+          print("Invalid input. Please enter a valid integer index.")
+          index = input("Enter the index of the tab to close (optional): ")
   return current_tab_index
+
  #function for url validation related to opening a new tab (option 1)
 #url used for help https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
 def isValidUrl(url):
@@ -149,9 +152,7 @@ def mainMenu():
      elif choice == 7:    
         filePath=input("Enter the path of the file to save the tabs to: ")
         saveTabs(tabs,filePath)
-
       # elif choice == 8:
-
      elif choice == 9:#closin the program 
             print("Thank you for using the Advanced Browser Tabs Simulation")
      else:#input less than 0 or greater than 9 
