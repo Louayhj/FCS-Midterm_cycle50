@@ -7,7 +7,15 @@ import requests
 import re 
 tabs = []
 
-#function to import tabs from file option 8 
+#function to import tabs from file option 8
+def importTabs(filePath):
+  try:
+      with open(filePath, 'r') as file:
+          loaded_tabs = json.load(file)
+          tabs.extend(loaded_tabs)
+      print("Tabs loaded from:", filePath)
+  except FileNotFoundError:
+      print("File not found. Please enter a valid file path.")
 
 
 #function to save tabs to json files option 7 
