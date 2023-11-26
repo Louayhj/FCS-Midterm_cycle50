@@ -1,3 +1,7 @@
+#Louay El Hajj 
+#FCS Cycle-50
+#Midterm 
+
 #lbraries imported for json and web scraping 
 #URL used for web scraping code snippet help : https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
 
