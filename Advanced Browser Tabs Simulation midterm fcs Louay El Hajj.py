@@ -126,7 +126,7 @@ def mainMenu():
        index = input("Enter the index of the tab you want to close\n""Leave it empty to close the last open tab: ")                           
        current_tab_index = closeTab(current_tab_index, index)
      elif choice == 3:
-       index = input("Enter the index of the tab you want to switch to: ")
+       index = input("Enter the index of the tab you want to switch to: (use valid urls http:// or https://)  ")
        current_tab_index = switch_tabs(current_tab_index, index)
 
      elif choice == 4:
