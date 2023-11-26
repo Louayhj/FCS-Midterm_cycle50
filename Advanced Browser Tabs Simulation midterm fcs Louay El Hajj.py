@@ -6,6 +6,12 @@ from bs4 import BeautifulSoup
 import requests 
 import re 
 tabs = []
+
+#function to save tabs to json files option 7 
+def saveTabs(tabs,filePath):
+  #used the with open function instead the open so the file will automatically close at the end 
+  with open(filePath, 'w') as file:#opening a file in write mode ('w')
+    json.dump(tabs, file, indent=4)#indent is the number of spaces to make it more readable 
 #function to sort all tabs (option6)
 #using selection sort 
 def sortTabs(tabs):
@@ -50,7 +56,6 @@ def switch_tabs(current_tab_index, index=None):
   if not tabs:
       print("No tabs available.")
       return current_tab_index
-
   if index == "":
       index = len(tabs)  # Switch to the last opened tab
   else:
@@ -62,7 +67,6 @@ def switch_tabs(current_tab_index, index=None):
       except ValueError:
           print("Invalid input. Please enter a valid integer index.")
           return current_tab_index
-
   url = tabs[index - 1]["url"]  # Adjust for 1-based index
   response = requests.get(url)
   print("Switched to tab {}: {}".format(index, tabs[index - 1]["title"]))
@@ -88,11 +92,9 @@ def closeTab(current_tab_index, index=None):
            print("Invalid tab index. Please try again.")
            index = input("Enter the index of the tab you want to close\n"
                                       "Leave it empty to close the last open tab: ")
-
     except ValueError:
       print("Invalid input. Please enter a valid integer index.")
       index = input("Enter the index of the tab to close (optional): ")
-
   return current_tab_index
  #function for url validation related to opening a new tab (option 1)
 #url used for help https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
