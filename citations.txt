@@ -6,3 +6,5 @@ https://www.coursera.org/learn/programming-in-python/lecture/oPHqM/file-handling
 #to validate that input is a valid url to prevent user error in web scraping
 https://snyk.io/blog/secure-python-url-validation/
 https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
+
+https://docs.python.org/3/tutorial/errors.html
