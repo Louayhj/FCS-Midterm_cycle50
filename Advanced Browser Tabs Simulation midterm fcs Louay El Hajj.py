@@ -12,6 +12,7 @@ def saveTabs(tabs,filePath):
   #used the with open function instead the open so the file will automatically close at the end 
   with open(filePath, 'w') as file:#opening a file in write mode ('w')
     json.dump(tabs, file, indent=4)#indent is the number of spaces to make it more readable 
+    print("Tabs saved in:", filePath)#output of the success of saving in right path
 #function to sort all tabs (option6)
 #using selection sort 
 def sortTabs(tabs):
