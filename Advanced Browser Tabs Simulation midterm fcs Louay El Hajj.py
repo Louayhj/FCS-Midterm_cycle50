@@ -73,7 +73,7 @@ def closeTab(current_tab_index, index=None):
   while True:
     if index is None:
       index = current_tab_index
-    try:
+    try:#used try and except to prevent user error wrong input for index
       if index == "":
         index = len(tabs)  # Close the last opened tab
         index = int(index)
