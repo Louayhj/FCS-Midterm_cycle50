@@ -18,7 +18,8 @@ def importTabs(filePath):
       print("File not found. Please enter a valid file path.")
   except json.JSONDecodeError:
       print("Error decoding JSON. Please ensure the file contains valid JSON data.")
-      
+  except json.JSONDecodeError:
+      print("Error decoding JSON. Please ensure the file contains valid JSON data.")
 
 
 #function to save tabs to json files option 7 
