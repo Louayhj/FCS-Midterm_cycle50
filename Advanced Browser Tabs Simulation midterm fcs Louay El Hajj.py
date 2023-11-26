@@ -7,6 +7,9 @@ import requests
 import re 
 tabs = []
 
+#function to import tabs from file option 8 
+
+
 #function to save tabs to json files option 7 
 def saveTabs(tabs,filePath):
   #used the with open function instead the open so the file will automatically close at the end 
@@ -152,7 +155,9 @@ def mainMenu():
      elif choice == 7:    
         filePath=input("Enter the path of the file to save the tabs to: ")
         saveTabs(tabs,filePath)
-      # elif choice == 8:
+     elif choice == 8:
+       filePath = input("Enter the path of the file to load tabs from: ")
+       importTabs(filePath)
      elif choice == 9:#closin the program 
             print("Thank you for using the Advanced Browser Tabs Simulation")
      else:#input less than 0 or greater than 9 
