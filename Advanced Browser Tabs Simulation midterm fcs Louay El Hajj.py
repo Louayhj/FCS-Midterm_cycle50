@@ -96,10 +96,12 @@ def closeTab(current_tab_index, index=None):
   return current_tab_index
  # Function to open a new tab (Option 1)
 def newTab(title, url):
+  while not isValidUrl(url):#validating the url with the isValidUrl function
+    print("Invalid URL format. Please enter a valid URL (starting with http:// or https://).")
+    url = input("Enter the URL: ")
   new_tab = {"title": title, "url": url, "nested_tabs": []}
   tabs.append(new_tab)
-  current_tab_index = len(tabs) - 1
-  print("Tab opened: " + title)
+  current_tab_index = len(tabs) - 1  
   return current_tab_index
 # Main menu function containing the options for the user to choose from
 def mainMenu():
