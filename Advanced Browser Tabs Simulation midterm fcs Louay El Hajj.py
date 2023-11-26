@@ -8,7 +8,7 @@ import re # regular expression library
 tabs = [] #initiating empty tab
 
 #function to import tabs from file option 8
-def importTabs(filePath):
+def importTabs(filePath): #Time Complexity: big O(n), where n is the number of elements in the fil
   try:#used try and except to prevent error such as data types and file not found
       with open(filePath, 'r') as file:  #(openning file in read mode )used with open to close the file automatically
           loaded_tabs = json.load(file)  #loading the files
@@ -22,7 +22,7 @@ def importTabs(filePath):
       print("An error occurred:", str(e))
 
 #function to save tabs to json files option 7 
-def saveTabs(tabs,filePath):
+def saveTabs(tabs,filePath):#Time Complexity: big O(n), where n is the number of elements in the tabs list.
   #used the with open function instead the open so the file will automatically close at the end 
   with open(filePath, 'w') as file:#opening a file in write mode ('w')
     json.dump(tabs, file, indent=4)#indent is the number of spaces to make it more readable 
@@ -32,7 +32,7 @@ def saveTabs(tabs,filePath):
 #using selection sort 
 def sortTabs(tabs):
     n = len(tabs)
-    for border in range(n - 1):
+    for border in range(n - 1):#Time Complexity:  big O(n^2), where n is the number of elements in the tabs list
         min_index = border # contain the index of the minimum element
         for i in range(border + 1, n):# to find the index of the minimum element
            if tabs[i]["title"] < tabs[min_index]["title"]:
@@ -42,7 +42,7 @@ def sortTabs(tabs):
     print("Tabs sorted based on titles.")
 
 # Function to open a nested tab (Option 5)
-def openNestedTab(current_tab_index):
+def openNestedTab(current_tab_index): #Time Complexity:big O(1)
     index = int(input("Enter the index of the parent tab: "))
     if 0 <= index < len(tabs):#checking if the input is in range 
         title = input("Enter the title of the website: ")
@@ -55,13 +55,14 @@ def openNestedTab(current_tab_index):
     return current_tab_index
 
 # Function to display all tabs (Option 4)
-def displayAllTabs():
+def displayAllTabs():# Time Complexity: big O(n), where n is the number of elements in the tabs list
     for i, tab in enumerate(tabs):
         print("{}. {}".format(i + 1, tab["title"]))
         if tab["nested_tabs"]:
             displayNestedTabs(tab["nested_tabs"], i + 1)
 
 # Function to display nested tabs related to option 4
+#Time Complexity: bigO(n), where n is the number of elements in the nested_tabs list
 def displayNestedTabs(nested_tabs, parent_index):#https://www.w3schools.com/python/ref_string_format.asp
     for j, nested_tab in enumerate(nested_tabs):
         print("   {}.{}. {}".format(parent_index, j + 1, nested_tab["title"]))
@@ -71,7 +72,7 @@ def displayNestedTabs(nested_tabs, parent_index):#https://www.w3schools.com/pyth
 # Function to switch tabs (Option 3)
 #URL used for web scraping code snippet help : https://www.geeksforgeeks.org/python-web-scraping-beautiful-soup/
 # please use https:// format to test the scraping 
-def switch_tabs(current_tab_index, index=None):
+def switch_tabs(current_tab_index, index=None):#Time Complexity:big O(1)
   global tabs #used global variable to detect the last opened tab 
   if not tabs:
       print("No tabs available.")
@@ -94,7 +95,7 @@ def switch_tabs(current_tab_index, index=None):
   return index
 
 #function to close a tab option number 2 
-def closeTab(current_tab_index, index=None):
+def closeTab(current_tab_index, index=None):#Time Complexity: bigO(n), where n is the number of elements in the tabs list
   while True:
       if index is None:
           index = current_tab_index
@@ -122,13 +123,13 @@ def closeTab(current_tab_index, index=None):
 
  #function for url validation related to opening a new tab (option 1)
 #url used for help https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
-def isValidUrl(url):
+def isValidUrl(url):#Time Complexity:big O(1)
   url_pattern = re.compile(r'https?://\S+')
   return bool(re.match(url_pattern, url))
  
  # Function to open a new tab (Option 1)
  #added a new function to prevent user error by accepting only valid url format
-def newTab(title, url):
+def newTab(title, url):#Time Complexity:big O(1)
   while not isValidUrl(url):#validating the url with the isValidUrl function
     print("Invalid URL format. Please enter a valid URL (starting with http:// or https://).")
     url = input("Enter the URL: ")
