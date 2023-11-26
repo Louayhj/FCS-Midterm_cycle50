@@ -101,7 +101,8 @@ def newTab(title, url):
     url = input("Enter the URL: ")
   new_tab = {"title": title, "url": url, "nested_tabs": []}
   tabs.append(new_tab)
-  current_tab_index = len(tabs) - 1  
+  current_tab_index = len(tabs) - 1
+  print("Tab opened: " + title)
   return current_tab_index
 # Main menu function containing the options for the user to choose from
 def mainMenu():
