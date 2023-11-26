@@ -94,7 +94,13 @@ def closeTab(current_tab_index, index=None):
       index = input("Enter the index of the tab to close (optional): ")
 
   return current_tab_index
+ #function for url validation related to opening a new tab (option 1)
+#url used for help https://www.slingacademy.com/article/python-ways-to-check-if-a-string-is-a-valid-url/
+def isValidUrl(url):
+  url_pattern = re.compile(r'https?://\S+')
+  return bool(re.match(url_pattern, url))
  # Function to open a new tab (Option 1)
+ #added a new function to prevent user error by accepting only valid url format
 def newTab(title, url):
   while not isValidUrl(url):#validating the url with the isValidUrl function
     print("Invalid URL format. Please enter a valid URL (starting with http:// or https://).")
